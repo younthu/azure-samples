@@ -11,5 +11,26 @@
   "extensionBundle": {
     "id": "Microsoft.Azure.Functions.ExtensionBundle",
     "version": "[2.*, 3.0.0)"
-  }
+  },
+  "extensions": {
+    "eventHubs": {
+        "maxEventBatchSize" : 10,
+        "batchCheckpointFrequency" : 5,
+        "prefetchCount" : 300,
+        "transportType" : "amqpWebSockets",
+        "webProxy" : "https://proxyserver:8080",
+        "customEndpointAddress" : "amqps://company.gateway.local",
+        "initialOffsetOptions" : {
+            "type" : "fromStart",
+            "enqueuedTimeUtc" : ""
+        },
+        "clientRetryOptions":{
+            "mode" : "exponential",
+            "tryTimeout" : "00:01:00",
+            "delay" : "00:00:00.80",
+            "maximumDelay" : "00:01:00",
+            "maximumRetries" : 3
+        }
+    }
+}
 }
